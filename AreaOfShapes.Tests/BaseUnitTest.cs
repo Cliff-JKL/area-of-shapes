@@ -10,7 +10,10 @@ public class Tests
     [Test]
     public void AreaCircleCalculateArea()
     {
-        Assert.That(new Circle(11.1).Area, Is.EqualTo(Math.PI * 11.1 * 11.1));
+        var circle = new Circle(11.1);
+        var area = circle.Area;
+        
+        Assert.That(area, Is.EqualTo(Math.PI * 123.21));
     }
     
     [Test]
@@ -18,7 +21,7 @@ public class Tests
     {
         Assert.Throws<ArgumentOutOfRangeException>(() =>
         {
-            var circleArea = new Circle(-5.2).Area;
+            var circleArea = new Circle(-5.2);
         });
     }
 
@@ -26,28 +29,58 @@ public class Tests
     public void AreaTriangleCalculateArea()
     {
         const double a = 7, b = 8, c = 9;
+        
         const double p = (a + b + c) / 2;
-        Assert.That(new Triangle(a, b, c).Area, Is.EqualTo(Math.Sqrt(p * (p - a) * (p - b) * (p - c))));
+
+        var triangle = new Triangle(a, b, c);
+        var area = triangle.Area;
+        
+        Assert.That(area, Is.EqualTo(Math.Sqrt(p * (p - a) * (p - b) * (p - c))));
     }
     
     [Test]
     public void AreaTriangleRightTriangle()
     {
-        Assert.That(new Triangle(8, 15, 17).IsTriangleRight, Is.EqualTo(true));
+        var triangle = new Triangle(8, 15, 17);
+        var isTriangleRight = triangle.IsTriangleRight;
+        
+        Assert.That(isTriangleRight, Is.EqualTo(true));
     }
 
     [Test]
     public void AreaTriangleNotRightTriangle()
     {
-        Assert.That(new Triangle(10, 15, 17).IsTriangleRight, Is.EqualTo(false));
+        var triangle = new Triangle(10, 15, 17);
+        var isTriangleRight = triangle.IsTriangleRight;
+        
+        Assert.That(isTriangleRight, Is.EqualTo(false));
     }
     
     [Test]
     public void AreaTriangleNegativeSides()
     {
+        // test every side
         Assert.Throws<ArgumentOutOfRangeException>(() =>
         {
-            var triangleArea = new Triangle(3, 4, -5).Area;
+            var area = new Triangle(3, 4, -5);
+        });
+        Assert.Throws<ArgumentOutOfRangeException>(() =>
+        {
+            var area = new Triangle(-3, 4, 5);
+        });
+        Assert.Throws<ArgumentOutOfRangeException>(() =>
+        {
+            var area = new Triangle(3, -4, 5);
+        });
+    }
+    
+    [Test]
+    public void AreaTriangleValidTriangle()
+    {
+        // Check if three side lengths are a triangle
+        Assert.Throws<Exception>(() =>
+        {
+            var area = new Triangle(2, 2, 4);
         });
     }
 }
