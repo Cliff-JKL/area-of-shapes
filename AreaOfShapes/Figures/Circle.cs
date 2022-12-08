@@ -2,7 +2,7 @@ namespace AreaOfShapes.Figures;
 
 public class Circle : Figure
 {
-    private double _radius;
+    private readonly double _radius;
 
     public Circle(double radius)
     {

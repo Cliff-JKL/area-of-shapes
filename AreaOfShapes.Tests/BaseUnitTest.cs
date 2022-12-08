@@ -59,7 +59,6 @@ public class Tests
     [Test]
     public void AreaTriangleNegativeSides()
     {
-        // test every side
         Assert.Throws<ArgumentOutOfRangeException>(() =>
         {
             var area = new Triangle(3, 4, -5);

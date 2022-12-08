@@ -2,7 +2,7 @@
 
 public abstract class Figure
 {
-    private Lazy<double> _area;
+    private readonly Lazy<double> _area;
     public double Area => _area.Value;
 
     protected Figure()

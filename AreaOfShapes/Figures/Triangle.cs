@@ -2,10 +2,10 @@ namespace AreaOfShapes.Figures;
 
 public class Triangle : Figure
 {
-    private double _a;
-    private double _b;
-    private double _c;
-    private bool _isTriangleRight;
+    private readonly double _a;
+    private readonly double _b;
+    private readonly double _c;
+    private readonly bool _isTriangleRight;
     public bool IsTriangleRight => _isTriangleRight;
 
     public Triangle(double a, double b, double c)
